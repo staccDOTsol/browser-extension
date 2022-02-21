@@ -6,9 +6,9 @@ import Image from 'next/image';
 import { PublicKey } from '@solana/web3.js'
 import React, {useState} from 'react';
 import { Toaster } from 'react-hot-toast';
-import { CreateButton, ITokenState } from './components/CreateButton';
-import { TokenDisplay } from './components/TokenDisplay';
-import styles from './styles/Home.module.css';
+import { CreateButton, ITokenState } from './pages/components/CreateButton';
+import { TokenDisplay } from './pages/components/TokenDisplay';
+import styles from './pages/styles/Home.module.css';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
