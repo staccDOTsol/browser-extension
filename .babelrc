@@ -1,6 +1,5 @@
 {
   "plugins": [
     "react-hot-loader/babel"
-, "transform-default-named-imports"  ],
-  "presets": ["@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript"]
+, "transform-default-named-imports"  ]
 }
