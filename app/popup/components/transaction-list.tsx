@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { createLogger } from "../../core/utils"
 import { ConfirmedSignatureInfo, PublicKey } from "@solana/web3.js"
 import { useConnection } from "../context/connection"

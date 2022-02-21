@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useState } from "react"
 import { Link as RouterLink, useHistory } from "react-router-dom"
 import Toolbar from "@material-ui/core/Toolbar"
