@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from "react"
 import Container from "@material-ui/core/Container"
 import { SolanaIcon } from "../components/solana-icon"

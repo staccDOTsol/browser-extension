@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useEffect, useState } from "react"
 import { useAccountInfo, useSolanaExplorerUrlSuffix } from "../hooks"
 import Paper from "@material-ui/core/Paper"

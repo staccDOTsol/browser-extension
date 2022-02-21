@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Swap } from '@strata-foundation/react';
 import type { InferGetServerSidePropsType, NextPage } from 'next';
 import { GetServerSideProps } from 'next';

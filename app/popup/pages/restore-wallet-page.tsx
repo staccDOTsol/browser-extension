@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { mnemonicToSeed } from "../utils/wallet-seed"

@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useEffect, useState } from "react"
 import Paper from "@material-ui/core/Paper"
 import { ConfirmedTransaction } from "@solana/web3.js"

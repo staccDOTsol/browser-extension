@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useState } from "react"
 import { CardActions, makeStyles, Typography } from "@material-ui/core"
 import Card from "@material-ui/core/Card"

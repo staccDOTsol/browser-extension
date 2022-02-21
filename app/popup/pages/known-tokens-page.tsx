@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useState } from "react"
 import { withLayout } from "../components/layout"
 import { useBackground } from "../context/background"

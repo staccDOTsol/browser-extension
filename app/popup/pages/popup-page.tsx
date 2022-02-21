@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from "react"
 import { Typography } from "@material-ui/core"
 import Card from "@material-ui/core/Card"

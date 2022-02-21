@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useEffect } from "react"
 import { Link as RouterLink } from "react-router-dom"
 import { Paths } from "../components/routes/paths"
