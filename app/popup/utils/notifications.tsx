@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useState } from "react"
 import { useConnection } from "../context/connection"
 import { useSolanaExplorerUrlSuffix } from "../hooks"
