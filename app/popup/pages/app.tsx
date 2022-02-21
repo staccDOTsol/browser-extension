@@ -1,94 +1,70 @@
-import React, { Suspense, useMemo } from "react"
-import CssBaseline from "@material-ui/core/CssBaseline"
-import useMediaQuery from "@material-ui/core/useMediaQuery"
-import {
-  makeStyles,
-  ThemeProvider,
-  unstable_createMuiStrictModeTheme as createMuiTheme,
-} from "@material-ui/core/styles"
-import { ConnectionProvider } from "../context/connection"
-import { LoadingIndicator } from "../components/loading-indicator"
-import { SnackbarProvider } from "notistack"
-import { BackgroundProvider } from "../context/background"
-import { Router } from "react-router-dom"
-import { history } from "../utils/history"
-import { Routes } from "../components/routes/routes"
-import { ProgramPluginsManagerProvider } from "../context/plugins"
+import { Swap } from '@strata-foundation/react';
+import type { InferGetServerSidePropsType, NextPage } from 'next';
+import { GetServerSideProps } from 'next';
+import Head from 'next/head';
+import Image from 'next/image';
+import { PublicKey } from '@solana/web3.js'
+import React, {useState} from 'react';
+import { Toaster } from 'react-hot-toast';
+import { CreateButton, ITokenState } from './components/CreateButton';
+import { TokenDisplay } from './components/TokenDisplay';
+import styles from './styles/Home.module.css';
 
-const useStyles = makeStyles({
-  success: { backgroundColor: "#25c2a0" },
-  error: { backgroundColor: "#B45BDC" },
-  warning: { backgroundColor: "#fa62fc" },
-  info: { backgroundColor: "#43b5c5" },
-})
-
-export const App: React.FC = () => {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)")
-  const theme = useMemo(
-    () =>
-      createMuiTheme({
-        palette: {
-          type: prefersDarkMode ? "dark" : "light",
-          primary: {
-            main: "#25c2a0",
-            contrastText: "#fff",
-          },
-          secondary: {
-            main: "#86b8b6",
-            contrastText: "#fff",
-          },
-          success: {
-            main: "#25c2a0",
-            contrastText: "#fff",
-          },
-          info: {
-            main: "#43b5c5",
-            contrastText: "#fff",
-          },
-          error: {
-            main: "#fa62fc",
-            contrastText: "#fff",
-          },
-        },
-        typography: {
-          fontSize: 13,
-        },
-        spacing: 6,
-      }),
-    [prefersDarkMode]
-  )
-  const classes = useStyles()
-
-  // Disallow rendering inside an iframe to prevent clickjacking.
-  if (window.self !== window.top) {
-    return null
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  return {
+    props: {
+      foo: "bar"
+    } 
   }
-
-  return (
-    <Suspense fallback={<LoadingIndicator />}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <BackgroundProvider>
-          <ConnectionProvider>
-            <ProgramPluginsManagerProvider>
-              <SnackbarProvider
-                maxSnack={5}
-                autoHideDuration={8000}
-                classes={{
-                  variantSuccess: classes.success,
-                  variantError: classes.error,
-                  variantWarning: classes.warning,
-                  variantInfo: classes.info,
-                }}
-              >
-                <Router history={history}>
-                  <Routes />
-                </Router>
-              </SnackbarProvider>
-            </ProgramPluginsManagerProvider>
-          </ConnectionProvider>
-        </BackgroundProvider>
-      </ThemeProvider>
-    </Suspense>
-  )
 }
+
+const App: NextPage = ({ foo }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const [tokenState, setTokenState] = React.useState<ITokenState>({});
+
+  const [ a1, seta1 ] = useState("");
+  const [ a2, seta2 ] = useState("");
+  function lala(){
+    try{
+      setTokenState({tokenRef: new PublicKey(a1), tokenBonding: new PublicKey(a2)})
+    }
+    catch(err){
+
+    }
+  }
+  function do1(event: any) {    seta1(event.target.value);  }
+  function do2(event: any) {    seta2(event.target.value);  }
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title>I Heart Freedom</title>
+        <meta name="description" content="Your money, your way, without the dollar." />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main className={styles.main}>
+<div><label>Enter a friend&apos;s token key (enter AXrredJXXo8jNFPxSsZ2kZa348PK3serkLt8qATZyEvb and 2wPbrA53ZDv4rFU48qNTN5i3Ds6H4V2gCZjJMYA5Ed1t to see mine :) ):<br />
+1st token id: <br />
+<input type="text" placeholder="{token ID}" onChange={do1}></input></label>
+<br /><label>2nd token id: <br />
+<input type="text" placeholder="{2nd token ID}" onChange={do2}></input></label> <br />
+
+<input type="submit" onClick={lala} /></div>        
+          <TokenDisplay  {...tokenState} />
+          <div style={{ width: "400px" }}>
+            {tokenState.tokenBonding && <Swap tokenBondingKey={tokenState.tokenBonding} />}
+          </div>
+          <Toaster
+            position="bottom-center"
+            containerStyle={{
+              margin: "auto",
+              width: "420px",
+            }}
+          />
+                    <CreateButton setTokenState={setTokenState} />
+
+      </main>
+    </div>
+  );
+};
+
+export default App;
