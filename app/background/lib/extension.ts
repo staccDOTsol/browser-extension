@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { checkForError } from "../../core/utils"
 
 export default class ExtensionPlatform {
