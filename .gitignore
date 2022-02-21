@@ -2,9 +2,9 @@
 .idea/*
 node_modules
 .DS_Store
-build
+#build
 package-lock.json
 .envrc
 
-/dist
+#/dist
 /yarn-error.log

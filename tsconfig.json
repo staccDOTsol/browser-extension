@@ -19,14 +19,14 @@
     "isolatedModules": true,
     "noEmit": true,
     "noImplicitAny": true,
-    "noImplicitAny": true,
     "strictNullChecks": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "sourceMap": true,
     "declaration": true,
     "declarationDir": "dist/types",
     "outDir": "dist/lib",
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "incremental": true
   },
   "files": [
     "app/popup/index.tsx"
@@ -36,5 +36,8 @@
   ],
   "include": [
     "app"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
