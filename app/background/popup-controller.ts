@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { Store } from "./store"
 import { createLogger, getMintInfo } from "../core/utils"
 import { Buffer } from "buffer"
